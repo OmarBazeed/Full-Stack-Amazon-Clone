@@ -1,13 +1,70 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { GlobalContext } from "../context/GlobalState";
 import { getBasketTotal } from "../context/AppReducer";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import CartProduct from "./CartProduct";
-
 import CurrencyFormat from "react-currency-format";
-import { CardElement } from "@stripe/react-stripe-js";
+import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
+import axios from "./axios";
+import { doc, setDoc } from "firebase/firestore";
+import { db } from "../firebase";
+
 export const Checkout = () => {
-  const { basket } = useContext(GlobalContext);
+  const { user, dispatch, basket } = useContext(GlobalContext);
+  const [clientSecret, setClientSecret] = useState();
+  const [error, setError] = useState(null);
+  const [disabled, setDisabled] = useState(true);
+  const [succeeded, setSucceeded] = useState(false);
+  const [processing, setProcessing] = useState("");
+  const stripe = useStripe();
+  const elements = useElements();
+  const navigate = useNavigate();
+
+  //-1
+  useEffect(() => {
+    const getClientSecret = async () => {
+      const response = await axios({
+        method: "post",
+        url: `/payments/create?total=${getBasketTotal(basket) * 100}`,
+      });
+      setClientSecret(response.data.clientSecret);
+      return response;
+    };
+    getClientSecret();
+  }, [basket]);
+
+  //-2
+  const handleChange = (e) => {
+    setDisabled(e.empty);
+    setError(error ? error.message : "");
+  };
+
+  //-3
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setProcessing(true);
+    const payload = await stripe
+      .confirmCardPayment(clientSecret, {
+        payment_method: {
+          card: elements.getElement(CardElement),
+        },
+      })
+      .then(({ paymentIntent }) => {
+        const ref = doc(db, "users", user?.uid, "orders", paymentIntent.id);
+        setDoc(ref, {
+          basket: basket,
+          amount: paymentIntent.amount,
+          created: paymentIntent.created,
+        });
+        setSucceeded(true);
+        setError(null);
+        setProcessing(false);
+        dispatch({
+          type: "EMPTY_BASKET",
+        });
+        navigate("/orders", { replace: true });
+      });
+  };
 
   return (
     <div className="p-6">
@@ -41,8 +98,11 @@ export const Checkout = () => {
 
       <div className="font-bold text-xl py-3 flex">
         <p className="flex-2 min-w-fit">Payment Method</p>
-        <form className="font-normal ml-4 w-full flex-3">
-          <CardElement />
+        <form
+          onSubmit={handleSubmit}
+          className="font-normal ml-4 w-full flex-3"
+        >
+          <CardElement onChange={handleChange} />
           <div className="font-bold my-3">
             <CurrencyFormat
               prefix={"$"}
@@ -53,9 +113,14 @@ export const Checkout = () => {
               decimalScale={2}
             />
           </div>
-          <button className="border border-gray-400 bg-[#F0C14B] w-full my-3">
-            Buy Now
+          <button
+            type="submit"
+            className="border border-gray-400 bg-[#F0C14B] w-full my-3 disabled:opacity-50 disabled:cursor-not-allowed"
+            disabled={succeeded || disabled || processing}
+          >
+            {processing ? "Processing" : "Buy Now"}
           </button>
+          {error && <div> {error}</div>}
         </form>
       </div>
       <hr />

@@ -27,6 +27,11 @@ const AppReducer = (state = InitailState, action) => {
         ...state,
         basket: filteredBasket,
       };
+    case "EMPTY_BASKET":
+      return {
+        ...state,
+        basket: [],
+      };
     default:
       return state;
   }

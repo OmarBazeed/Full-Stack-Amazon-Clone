@@ -1,4 +1,6 @@
-import { React } from "react";
+import { Elements } from "@stripe/react-stripe-js";
+import { loadStripe } from "@stripe/stripe-js";
+import React from "react";
 import { Route, Routes } from "react-router-dom";
 import Cart from "./components/Cart";
 import { Checkout } from "./components/Checkout";
@@ -9,6 +11,9 @@ import Orders from "./components/Orders";
 import Prime from "./components/Prime";
 
 const App = () => {
+  const stripePromise = loadStripe(
+    "pk_test_51MYXyaAjNt0UgB6McGDIJqOcDcgqnLgy1zGJo5KKxKq2TH7kdA111KH3T8ORrDeQmzM4Aah8g2AeuAOgumooDWql00QVXlnuw6"
+  );
   return (
     <div>
       <Header />
@@ -18,7 +23,16 @@ const App = () => {
         <Route path="/orders" element={<Orders />} />
         <Route path="/prime" element={<Prime />} />
         <Route path="/cart" element={<Cart />} />
-        <Route path="/checkout" element={<Checkout />} />
+        <Route
+          path="/checkout"
+          element={
+            <React.Fragment>
+              <Elements stripe={stripePromise}>
+                <Checkout />
+              </Elements>
+            </React.Fragment>
+          }
+        />
         <Route
           path="*"
           element={
