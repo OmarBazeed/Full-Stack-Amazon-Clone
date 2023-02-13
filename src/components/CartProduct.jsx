@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import StartImage from "../assests/star.png";
 import { GlobalContext } from "../context/GlobalState";
 
-const CartProduct = ({ id, title, rating, price, image }) => {
+const CartProduct = ({ id, title, rating, price, image, hidden }) => {
   const { dispatch } = useContext(GlobalContext);
   const handleRemove = () => {
     dispatch({
@@ -34,12 +34,14 @@ const CartProduct = ({ id, title, rating, price, image }) => {
               />
             ))}
         </div>
-        <button
-          className="border border-gray-400 bg-[#FFC107] mt-8 rounded-lg p-2"
-          onClick={handleRemove}
-        >
-          Remove From Basket
-        </button>
+        {!hidden && (
+          <button
+            className="border border-gray-400 bg-[#FFC107] mt-8 rounded-lg p-2"
+            onClick={handleRemove}
+          >
+            Remove From Basket
+          </button>
+        )}
       </div>
     </div>
   );

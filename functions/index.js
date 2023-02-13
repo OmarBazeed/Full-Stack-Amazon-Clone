@@ -21,6 +21,7 @@ app.post("/payments/create", async (req, res) => {
     amount: total,
     currency: "usd",
   });
+  console.log(paymentIntent);
 
   //! ok - created
   //* Here Everything Is Ok So I Send The clientSecret To The Frontend To Use it With Stripe And Complete The Purchasing Process (Confirmation)

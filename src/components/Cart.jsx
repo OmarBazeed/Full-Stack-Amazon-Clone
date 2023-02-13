@@ -16,7 +16,7 @@ const Cart = () => {
         <hr />
         <div className="cardItems space-y-8 mt-8">
           {basket.length === 0 ? (
-            <p className="text-red-600 font-bold text-xl animate-bounce shadow-lg w-fit bg-green-200 rounded-xl p-4">
+            <p className="text-red-600 font-bold text-xl animate-bounce shadow-lg p-5 bg-transparent w-fit text-center mx-auto">
               There Are No Items
             </p>
           ) : (

@@ -50,6 +50,7 @@ export const Checkout = () => {
         },
       })
       .then(({ paymentIntent }) => {
+        // Creating Database Using Firebase Methods doc() , setDoc() After The Request Successeded
         const ref = doc(db, "users", user?.uid, "orders", paymentIntent.id);
         setDoc(ref, {
           basket: basket,
@@ -90,6 +91,7 @@ export const Checkout = () => {
               rating={rating}
               title={title}
               image={image}
+              key={id}
             />
           ))}
         </div>
@@ -108,7 +110,7 @@ export const Checkout = () => {
               prefix={"$"}
               thousandSeparator={true}
               value={getBasketTotal(basket)}
-              renderText={(value) => <p> Order Total : {value}</p>}
+              renderText={(value) => <p> Order Total : {value} </p>}
               displayType={"text"}
               decimalScale={2}
             />
