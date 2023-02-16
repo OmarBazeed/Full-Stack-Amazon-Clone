@@ -49,7 +49,7 @@ const Header = () => {
           <p className="text-[15px]"> Your</p>
           <p className="font-bold"> Prime</p>
         </Link>
-        <Link to="cart">
+        <Link to="/cart">
           <img src={Cart} alt="Cart" className="inline-block" />
           <span className="font-bold ml-2">{basket.length}</span>
         </Link>

@@ -24,9 +24,9 @@ const Orders = () => {
     }
   }, [user]);
   return (
-    <div>
-      <h1 className="font-bold text-2xl p-3">Your Orders</h1>
-      <div className="h-fit bg-orange-50 w-[90%] p-5 mx-auto">
+    <div className="bg-gray-200 min-h-screen">
+      <h1 className="font-bold text-2xl p-3 mb-3">Your Orders</h1>
+      <div className="h-fit bg-white w-[95%] p-5 mx-auto">
         {orders.map((order) => (
           <Order order={order} />
         ))}

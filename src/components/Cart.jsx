@@ -33,7 +33,7 @@ const Cart = () => {
           )}
         </div>
       </div>
-      <div className="flex-2 min-w-[250px] bg-[#F3F3F3] h-fit p-3">
+      <div className="flex-2 min-w-[250px] bg-[#F3F3F3] h-fit p-3 mt-7">
         <Subtotal />
       </div>
     </div>

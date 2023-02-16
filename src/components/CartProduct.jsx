@@ -1,19 +1,24 @@
-import React, { useContext } from "react";
+import React, { useContext, useRef } from "react";
 import StartImage from "../assests/star.png";
 import { GlobalContext } from "../context/GlobalState";
 
 const CartProduct = ({ id, title, rating, price, image, hidden }) => {
   const { dispatch } = useContext(GlobalContext);
+  const removedDiv = useRef();
   const handleRemove = () => {
-    dispatch({
-      type: "REMOVE_FROM_CART",
-      payload: id,
-    });
+    removedDiv.current.style.animation = "fadeOutLeftBig 1 1s  linear both";
+    setTimeout(() => {
+      dispatch({
+        type: "REMOVE_FROM_CART",
+        payload: id,
+      });
+    }, 1000);
   };
+
   return (
-    <div className="flex items-start">
+    <div className="flex items-start max-[425px]:flex-wrap" ref={removedDiv}>
       <div className="mr-3">
-        <img src={image} alt="..." className="w-96 h-64 mx-auto block my-3 " />
+        <img src={image} alt="..." className="w-96 h-64 mx-auto block my-3" />
       </div>
       <div>
         <p>

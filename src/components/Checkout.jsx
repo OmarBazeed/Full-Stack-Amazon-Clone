@@ -8,6 +8,7 @@ import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import axios from "./axios";
 import { doc, setDoc } from "firebase/firestore";
 import { db } from "../firebase";
+import swal from "sweetalert";
 
 export const Checkout = () => {
   const { user, dispatch, basket } = useContext(GlobalContext);
@@ -43,6 +44,12 @@ export const Checkout = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setProcessing(true);
+
+    if (!user) {
+      const error = await swal("Oops!", "Please Sign In First!", "error");
+      error && navigate("/login");
+    }
+
     const payload = await stripe
       .confirmCardPayment(clientSecret, {
         payment_method: {
@@ -81,7 +88,7 @@ export const Checkout = () => {
         <span className="font-normal text-sm ml-4"> Alexandria , Egypt</span>
       </p>
       <hr />
-      <div className="font-bold text-xl py-3 flex items-center justify-between">
+      <div className="font-bold text-xl py-3 flex max-[768px]:flex-wrap items-center justify-between">
         <p className="flex-2 min-w-fit"> Review items and delivery</p>
         <div className="flex-3 ml-4 font-normal text-sm space-y-4">
           {basket.map(({ id, price, rating, image, title }) => (
@@ -98,7 +105,7 @@ export const Checkout = () => {
       </div>
       <hr />
 
-      <div className="font-bold text-xl py-3 flex">
+      <div className="font-bold text-xl py-3 flex max-[425px]:flex-wrap">
         <p className="flex-2 min-w-fit">Payment Method</p>
         <form
           onSubmit={handleSubmit}
