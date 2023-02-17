@@ -34,7 +34,7 @@ const CartProduct = ({ id, title, rating, price, image, hidden }) => {
   };
 
   return (
-    <div className="flex items-start max-[425px]:flex-wrap" ref={removedDiv}>
+    <div className="flex items-start max-[570px]:flex-wrap" ref={removedDiv}>
       <div className="mr-3">
         <img src={image} alt="..." className="w-96 h-64 mx-auto block my-3" />
       </div>
