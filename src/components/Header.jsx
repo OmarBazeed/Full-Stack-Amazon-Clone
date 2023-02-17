@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Logo from "../assests/amazonLogo.png";
 import Search from "../assests/search.png";
@@ -12,8 +12,18 @@ const Header = () => {
   const handleSignOut = async () => {
     await signOut(auth);
   };
+
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > 0) {
+      document.querySelector(".TheHeader").style.background =
+        "linear-gradient(to right, #200122, #6f0000)";
+    } else {
+      document.querySelector(".TheHeader").style.background = "black";
+    }
+  });
+
   return (
-    <div className="bg-[#131921] py-2 flex items-center text-white px-2 flex-wrap">
+    <div className="bg-[#131921] py-2 flex items-center text-white px-2 flex-wrap fixed z-50 w-full TheHeader">
       <Link to="/" className="">
         <img
           src={Logo}

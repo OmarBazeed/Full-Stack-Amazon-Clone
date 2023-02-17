@@ -89,7 +89,9 @@ export const Checkout = () => {
       </p>
       <hr />
       <div className="font-bold text-xl py-3 flex max-[768px]:flex-wrap items-center justify-between">
-        <p className="flex-2 min-w-fit"> Review items and delivery</p>
+        <p className="flex-2 min-w-fit max-[786px]:mb-4">
+          Review items and delivery
+        </p>
         <div className="flex-3 ml-4 font-normal text-sm space-y-4">
           {basket.map(({ id, price, rating, image, title }) => (
             <CartProduct
@@ -105,8 +107,8 @@ export const Checkout = () => {
       </div>
       <hr />
 
-      <div className="font-bold text-xl py-3 flex max-[425px]:flex-wrap">
-        <p className="flex-2 min-w-fit">Payment Method</p>
+      <div className="font-bold text-xl py-3 flex max-[768px]:flex-wrap">
+        <p className="flex-2 min-w-fit max-[786px]:mb-4">Payment Method</p>
         <form
           onSubmit={handleSubmit}
           className="font-normal ml-4 w-full flex-3"

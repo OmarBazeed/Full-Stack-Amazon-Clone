@@ -1,4 +1,5 @@
 import React, { useContext, useRef } from "react";
+import Swal from "sweetalert2";
 import StartImage from "../assests/star.png";
 import { GlobalContext } from "../context/GlobalState";
 
@@ -13,6 +14,23 @@ const CartProduct = ({ id, title, rating, price, image, hidden }) => {
         payload: id,
       });
     }, 1000);
+
+    const Toast = Swal.mixin({
+      toast: true,
+      position: "top-end",
+      showConfirmButton: false,
+      timer: 2000,
+      timerProgressBar: true,
+      didOpen: (toast) => {
+        toast.addEventListener("mouseenter", Swal.stopTimer);
+        toast.addEventListener("mouseleave", Swal.resumeTimer);
+      },
+    });
+
+    Toast.fire({
+      icon: "error",
+      title: "One Item Deleted",
+    });
   };
 
   return (
