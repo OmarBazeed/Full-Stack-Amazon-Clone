@@ -1,70 +1,41 @@
-# Getting Started with Create React App
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+##  Full Stack Amazon Clone Using `React` , `firebase` , `stripe , stripe-js` And `context-API`  :
+ + Creating An Amazon Clone With `React`==>(frontend) And `firebase`==>(backend) And `stripe`==> **(For Adding Payment Method)**
+ + Using Stipe And Stripe-js For Activating The Payment Methods Using Some `stripe` Functions()
+ + Using React and Contxt API As A frontend Role 
+ + Using Firebase With ( `axios` )for Authentication And Data Base For The Application As A Backend Role
+ + Fully Responsive App Smoothly Using `tailwind`
+ + Using `sweetalert` , `sweetalert2` , `memo` , `shortid` , `animate.css`  For Beatify The App
+ + Go And Take A Look Then Go For Coding...
+ ---------------------------------------------------------------------------------------------------------------
+ ### Installation Requierments :
+ ```
+ npm i --save 
+             stripe @stripe/stripe-js @stripe/react-stripe-js
+             firebase axios
+             tailwind -D npx tailwindcss init
+             sweetalert sweetalert2 memo shortid animate.css
+             react-router-dom
+   ``` 
+  ---------------------------------------------------------------------------------------------------------------
+ ### Live Demo : 
+ [Full-Stack Amazon Clone](https://ob-full-stack-amazon-clone.onrender.com)
+ 
+ ---------------------------------------------------------------------------------------------------------------
+ ### Live Pictures :
+ <div>
+ <img src='https://user-images.githubusercontent.com/114960595/219815623-e7c58584-f849-49f6-93d2-4d75d0594499.png' />
+ <br />
+ <img src='https://user-images.githubusercontent.com/114960595/219815543-89406939-ea21-4246-835b-fef71f040e0b.png' />
+  <br />
+ <img src='https://user-images.githubusercontent.com/114960595/219815544-3b7f5c95-313b-4768-8389-b500615c4be9.png' />
+  <br />
+ <img src='https://user-images.githubusercontent.com/114960595/219815563-f472e978-bf69-4fd4-b77d-2312000139a8.png' />
+  <br />
+ <img src='https://user-images.githubusercontent.com/114960595/219815576-b1670210-1310-4561-b45f-e77639fb9f89.png' />
+ <br />
+ <img src='https://user-images.githubusercontent.com/114960595/219815583-120eda69-e6e7-4961-b708-98b632960ebb.png' />
+ <br />
+ <br />
+ <h4> Stripe Concept ==> How Stripe Works </h4>
+ <img src='https://user-images.githubusercontent.com/114960595/219816202-282bf8bd-31e3-472f-82cb-2dd9edb8aad2.png' />
+ </div>
